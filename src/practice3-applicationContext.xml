@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your beans here -->
+ 	<bean id="defaultCoach"
+ 		class="com.maxiaoteng.springdemo.TrackCoach" >
+ 		<!-- Inject dependency use constructor with one argument -->
+ 		<constructor-arg ref = "myFortune"/>	 		
+ 	</bean>
+    
+    <!-- Define my bean that its scope property is prototype -->
+    <bean id = "prototypeCoach"
+    	class = "com.maxiaoteng.practice2.GolfCoach"
+    	scope = "prototype">
+    	<!-- Inject dependency use setter method -->
+    	<property name="randomFortune" ref = "randomFortune"></property>		
+    </bean>
+    
+    
+    <!-- define the dependency -->
+	<bean id = "myFortune"
+		class = "com.maxiaoteng.springdemo.HappyFortuneService">
+	</bean>
+ 
+ 	<bean id = "randomFortune"
+ 		class = "com.maxiaoteng.practice2.RandomFortuneService"></bean>
+ 		
+</beans>
+
+
+
+
+
